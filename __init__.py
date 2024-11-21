@@ -41,73 +41,11 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-@app.route('/commits/')
-def commits_chart():
-    # URL de l'API GitHub
-    api_url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
-    
-    # Récupération des données des commits
-    response = requests.get(api_url)
-    commits_data = response.json()
-    
-    # Extraction des minutes des commits
-    minutes = []
-    for commit in commits_data:
-        date_string = commit['commit']['author']['date']
-        date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
-        minutes.append(date_object.minute)
-    
-    # Compter le nombre de commits par minute
-    commits_per_minute = {}
-    for minute in minutes:
-        commits_per_minute[minute] = commits_per_minute.get(minute, 0) + 1
-    
-    # Convertir les données en format utilisable par le graphique
-    chart_data = [{"minute": minute, "count": count} for minute, count in commits_per_minute.items()]
-    
-    return render_template('commits.html', data=chart_data)
 
-from flask import Flask, jsonify, render_template
-import requests
-from datetime import datetime
-import logging
 
-app = Flask(__name__)
-
-logging.basicConfig(level=logging.DEBUG)
-
-@app.route('/commits/')
-def commits_chart():
-    try:
-        # URL de l'API GitHub
-        api_url = "https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits"
-        
-        # Récupération des données des commits
-        response = requests.get(api_url)
-        response.raise_for_status()  # Vérifie si l'API renvoie une erreur
-        commits_data = response.json()
-        app.logger.debug(f"Data from API: {commits_data}")
-        
-        # Extraction des minutes des commits
-        minutes = []
-        for commit in commits_data:
-            date_string = commit['commit']['author']['date']
-            date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
-            minutes.append(date_object.minute)
-        
-        # Compter le nombre de commits par minute
-        commits_per_minute = {}
-        for minute in minutes:
-            commits_per_minute[minute] = commits_per_minute.get(minute, 0) + 1
-        
-        # Convertir les données en format utilisable par le graphique
-        chart_data = [{"minute": minute, "count": count} for minute, count in commits_per_minute.items()]
-        
-        return render_template('commits.html', data=chart_data)
-
-    except requests.exceptions.RequestException as e:
-        app.logger.error(f"Error fetching data from GitHub API: {e}")
-        return "Error fetching data", 500
+@app.route('/commit/')
+def commits():
+    return render_template('commit.html')
 
 
 
