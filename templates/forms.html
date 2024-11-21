@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactez-nous</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #74b9ff, #81ecec);
+      color: #2d3436;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .contact-form {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+    }
+    .contact-form h1 {
+      text-align: center;
+      color: #0984e3;
+    }
+    .contact-form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .contact-form input, .contact-form textarea, .contact-form button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #dfe6e9;
+      border-radius: 5px;
+    }
+    .contact-form textarea {
+      resize: none;
+      height: 100px;
+    }
+    .contact-form button {
+      background: #0984e3;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover {
+      background: #74b9ff;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #636e72;
+    }
+    .footer a {
+      color: #0984e3;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-form">
+    <h1>Contactez-nous</h1>
+    <form action="#" method="post">
+      <label for="nom">Nom :</label>
+      <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+      
+      <label for="prenom">Prénom :</label>
+      <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+      
+      <label for="message">Message :</label>
+      <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+      
+      <button type="submit">Envoyer</button>
+    </form>
+    <div class="footer">
+      <p>Merci de nous avoir contactés. Visitez notre <a href="/">page d'accueil</a>.</p>
+    </div>
+  </div>
+</body>
+</html>
