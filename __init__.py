@@ -13,8 +13,8 @@ def hello_world():
 
 @app.route("/contact/")
 def MaPremiereAPI():
-    return "<h2>Ma page de contact</h2>"
-
+    return render_template("forms.html") 
+  
 @app.route('/tawarano/')
 def meteo():
     response = urlopen('https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx')
@@ -34,6 +34,8 @@ def mongraphique():
 @app.route("/histogramme/")
 def mongraphique2():
     return render_template("graphique2.html")
+
+
   
 if __name__ == "__main__":
   app.run(debug=True)
