@@ -39,16 +39,11 @@ from flask import Flask, jsonify, render_template
 import requests
 from datetime import datetime
 
-app = Flask(__name__)
 
-
-
-@app.route('/commit/')
+@app.route('/commits/')
 def commits():
-    return render_template('commit.html')
+    return render_template('commits.html')
 
 
-
-  
 if __name__ == "__main__":
   app.run(debug=True)
